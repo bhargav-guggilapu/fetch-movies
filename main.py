@@ -41,7 +41,16 @@ firebaseConfig = {
     'appId': "1:303428195964:web:cd5177c0d3a5caab52dbf9",
     'measurementId': "G-F5PW7CEKTQ"
 }
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:39.0) Gecko/20100101 Firefox/39.0')
+
+driver = webdriver.Chrome(options = options)
+driver.set_page_load_timeout(30)
+
 for month in months:
     month_name = month.lower()
     released = []
@@ -56,3 +65,5 @@ for month in months:
 firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 db.child('movies').set(obj)
+
+driver.quit()
