@@ -3,6 +3,7 @@ from datetime import datetime
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 import pyrebase
+import os
 
 def date_formatter(date):
     if len(date) == 3:
@@ -28,9 +29,8 @@ def movies_list(movies):
 obj = {}
 months = calendar.month_name[1:]
 months_short = [month[0:3] for month in months]
-
 firebaseConfig = {
-    'apiKey': "AIzaSyAPObJ33OmHBZtk-uLZkMJUu0phdd6iJDQ",
+    'apiKey': os.environ["API_KEY"],
     'authDomain': "movies-list-80e05.firebaseapp.com",
     'databaseURL': "https://movies-list-80e05-default-rtdb.firebaseio.com",
     'projectId': "movies-list-80e05",
