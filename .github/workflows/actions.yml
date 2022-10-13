@@ -23,4 +23,6 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # run main.py
+        env:
+            PASSWORD: ${{ secrets.API_KEY }}
         run: python main.py
