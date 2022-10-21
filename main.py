@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 import pyrebase
 import os
-
+print(os.environ["API_KEY"])
 def date_formatter(date):
     if len(date) == 3:
         return f"{date[0]}-{str(months_short.index(date[1]) + 1).zfill(2)}-{date[2]}"
